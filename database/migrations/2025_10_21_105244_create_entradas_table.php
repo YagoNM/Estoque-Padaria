@@ -18,12 +18,13 @@ return new class extends Migration
             $table->date('data'); // Data da entrada
             $table->decimal('preco_custo', 10, 2)->nullable(); // Preço de custo do item
             $table->string('observacoes', 255)->nullable(); // Observações adicionais
+            $table->softDeletes();
             $table->timestamps();
 
-            // $table->foreign('produto_id')
-            //       ->references('id')
-            //       ->on('produtos')
-            //       ->onDelete('cascade');
+            $table->foreign('produto_id')
+                  ->references('id')
+                  ->on('produtos')
+                  ->onDelete('cascade');
         });
     }
 

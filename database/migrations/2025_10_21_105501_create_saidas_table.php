@@ -18,13 +18,14 @@ return new class extends Migration
             $table->date('data'); // Data da saída
             $table->string('motivo', 100)->nullable(); // Motivo da saída
             $table->string('observacoes', 255)->nullable(); // Observações adicionais
+            $table->softDeletes();
             $table->timestamps();
 
 
-            // $table->foreign('produto_id')
-            //       ->references('id')
-            //       ->on('produtos')
-            //       ->onDelete('cascade');
+            $table->foreign('produto_id')
+                  ->references('id')
+                  ->on('produtos')
+                  ->onDelete('cascade');
         });
     }
 

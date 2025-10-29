@@ -21,12 +21,13 @@ return new class extends Migration
             $table->date('data_validade')->nullable();
             $table->unsignedBigInteger('fornecedor_id')->nullable();
             $table->decimal('preco_custo', 10, 2)->nullable();
+            $table->softDeletes();
             $table->timestamps();
 
-           // $table->foreign('fornecedor_id')
-           //       ->references('id')
-           //       ->on('fornecedores')
-           //       ->onDelete('set null');
+            $table->foreign('fornecedor_id')
+                  ->references('id')
+                  ->on('fornecedores')
+                  ->onDelete('set null');
         });
     }
 

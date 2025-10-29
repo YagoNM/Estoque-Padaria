@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('fornecedores', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 100);
-            $table->string('contato', 100)->nullable();
-            $table->string('cnpj', 20)->nullable();
-            $table->string('endereco', 150)->nullable();
+            $table->string('nome', 150);
+            $table->string('contato', 150)->nullable();
+            $table->string('cnpj', 20)->unique()->nullable(); 
+            $table->string('endereco', 255)->nullable();
+            $table->softDeletes(); 
+            
             $table->timestamps();
         });
     }
